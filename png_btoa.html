@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>halp</title>
+		<script src="generatepng.js"></script>
+		<script src="rainbow_ball.js"></script>
+<script>
+/*jslint plusplus:true */
+/*global createRainbowBall: false, generatePng: false,btoa: false*/
+window.addEventListener('DOMContentLoaded', function () {
+	'use strict';
+
+	var RADIUS = 75,
+		PHASES = 5,
+		pngW = 2 * RADIUS,
+		pngH = 2 * RADIUS,
+		pngData,
+		pngFile,
+		base64png,
+		dataUrl = 'data:image/png;base64,',
+		img,
+		ballpen;
+
+	pngData	= createRainbowBall(RADIUS, PHASES);
+	pngFile = generatePng(pngW, pngH, pngData);
+
+	base64png = btoa(pngFile);
+	dataUrl += base64png;
+
+	img = document.createElement("img");
+	img.src = dataUrl;
+	img.style.float = "left";
+	img.style.left = "0";
+	img.style.top = "0";
+	img.style.zIndex = "2";
+	ballpen = document.getElementById("ballpen");
+	ballpen.insertBefore(img, ballpen.firstChild);
+}, false);
+</script>
+<style type="text/css">
+img {
+	margin:1px;
+}
+body {
+	 background:url(bg.png);
+}
+#ballpen {
+	display:inline-block;
+}
+#ballpentext {
+	font-family: monospace;
+	z-index:3;
+	width:150px;
+	margin-top:-100px;
+}
+</style>
+</head>
+<body>
+<h1>Png</h1>
+<div id="ballpen"><div id="ballpentext">Help how did this get here, i'm not good with computers</div></div>
+
+</body></html>
