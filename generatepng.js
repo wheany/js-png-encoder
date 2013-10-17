@@ -99,7 +99,7 @@
 				dwordAsString(CRC);
 		},
 
-		IEND = createChunk(0, 'IEND', ''),
+		IEND,
 
 		createIHDR = function (width, height) {
 			var IHDRdata;
@@ -151,5 +151,7 @@
 		};
 
 	make_crc_table();
+	IEND = createChunk(0, 'IEND', '');
+
 	globalObj.generatePng = png;
 }(this));
